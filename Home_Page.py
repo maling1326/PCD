@@ -15,12 +15,20 @@ try:
 except ImportError:
     redirect_to_web()
 
+import os
+
+ICON_PATH = "assets/logo.webp"
+LOGO_PATH = "assets/LOGO_UNESA.png"
+
+actual_icon = ICON_PATH if os.path.exists(ICON_PATH) else "🎨"
+
 st.set_page_config(
-    page_title="Main Page",
-    page_icon="assets/logo.webp",
+    page_title="Home Page",  
+    page_icon=actual_icon,
 )
 
-st.logo("assets/LOGO_UNESA.png")
+if os.path.exists(LOGO_PATH):
+    st.logo(LOGO_PATH)
 
 with st.sidebar:    
     st.title("🎓 Learning Dashboard")

@@ -19,14 +19,22 @@ import numpy as np
 import cv2 as cv
 import zipfile
 import io
-
+import os
 from utils.image_processing import *
+
+ICON_PATH = "assets/logo.webp"
+LOGO_PATH = "assets/LOGO_UNESA.png"
+
+actual_icon = ICON_PATH if os.path.exists(ICON_PATH) else "🎨"
 
 st.set_page_config(
     page_title="Pengolahan Citra Digital",  
-    page_icon="logo.webp",
+    page_icon=actual_icon,
 )
-st.logo("assets/LOGO_UNESA.png")
+
+if os.path.exists(LOGO_PATH):
+    st.logo(LOGO_PATH)
+
 eps = 1e-6
 
 RGB_img = None

@@ -16,12 +16,20 @@ except ImportError:
     redirect_to_web()
 
 import pandas as pd
+import os
+
+ICON_PATH = "assets/logo.webp"
+LOGO_PATH = "assets/LOGO_UNESA.png"
+
+actual_icon = ICON_PATH if os.path.exists(ICON_PATH) else "🎨"
 
 st.set_page_config(
-    page_title="Pengolahan Citra Digital",  
-    page_icon="logo.webp",
+    page_title="Keamanan Data",  
+    page_icon=actual_icon,
 )
-st.logo("assets/LOGO_UNESA.png")
+
+if os.path.exists(LOGO_PATH):
+    st.logo(LOGO_PATH)
 
 def encrypt(plaintext, key, type = "vigenere", ):
     ciphertext = ""
@@ -91,6 +99,7 @@ def cryptograhy_explanation():
         """)
 
         c1, c2 = st.columns(2)
+        
         with c1:
             st.subheader("Caesar Cipher")
             st.info("Setiap huruf digantikan dengan huruf yang berada tiga (3) posisi dalam urutan alfabet[cite: 27].")
